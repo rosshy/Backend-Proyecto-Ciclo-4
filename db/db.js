@@ -1,10 +1,8 @@
-import { connect } from 'mongoose';
-// const { connect } = require('mongoose');
+import mongoose from 'mongoose';
 
 const conectarBD = async () => {
-  return await connect(
-    'mongodb+srv://admin:Admin123@jose.hphxh.mongodb.net/jose?retryWrites=true&w=majority'
-  )
+  return await mongoose
+    .connect(process.env.DATABASE_URL)
     .then(() => {
       console.log('Conexion exitosa');
     })
