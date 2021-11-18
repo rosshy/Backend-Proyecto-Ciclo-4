@@ -9,8 +9,8 @@ enum Enum_EstadoProyecto{
     inactivo='Inactivo',
 }
 enum Enum_FaseProyecto{
-   iniciado="In"En Desarrollo2,
+   iniciado="En Desarrollo",
    terminado="Terminado",
    nula='',
 }
-export {Enum_Rol,Enum_EstadoUsuario,Enum_FaseProyecto,};
+export {Enum_Rol,Enum_EstadoProyect,Enum_FaseProyecto,};

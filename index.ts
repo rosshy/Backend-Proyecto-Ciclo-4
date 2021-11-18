@@ -6,20 +6,20 @@ const main = async () => {
   await conectarBD();
 
  // Crear un usuario
-  await UserModel.create({
-  nombre:'Jose',
-  apellido:'Lopez',
-  correo:'jose@a.com',
-  identificacion:'1032',
-  rol:Enum_Rol.administrador,
+//   await UserModel.create({
+//   nombre:'Jose',
+//   apellido:'Lopez',
+//   correo:'jose@a.com',
+//   identificacion:'1032',
+//   rol:Enum_Rol.administrador,
   
 
-  }).then((u)=>{
-  console.log('Usuario creado exitosamente:',u);
+//   }).then((u)=>{
+//   console.log('Usuario creado exitosamente:',u);
 
-}).catch((e)=>{
-  console.log('Error creando el usuario',e);
-}); 
+// }).catch((e)=>{
+//   console.log('Error creando el usuario',e);
+// }); 
 
 // Obtener los Usuarios
 // await UserModel.find()
