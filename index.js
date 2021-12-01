@@ -1,29 +1,24 @@
-import express from 'express';
-import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
-import dotenv from 'dotenv';
-import conectarBD from './db/db.js';
-import { tipos } from './graphql/types.js';
-import { resolvers } from './graphql/resolvers.js';
+import { typesDefs } from './src/graphQL/TypeDefs';
+import { resolvers } from './src/graphQL/Resolvers';
+import DataBase from './src/database/DataBase';
+import mongoose from 'mongoose';
+import app from './app';
 
-dotenv.config();
+mongoose.connect(DataBase.db, {     
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})  
+    .then( () => console.log("Data Base MongoAtlas Connected!!"))    
+    .catch(error => console.log("Connect wrong ", error));
 
 const server = new ApolloServer({
-  typeDefs: tipos,
-  resolvers: resolvers,
-});
+    typeDefs: typesDefs,
+    resolvers
+}); 
 
-const app = express();
-
-app.use(express.json());
-
-app.use(cors());
-
-app.listen({ port: process.env.PORT || 4000 }, async () => {
-  await conectarBD();
-  await server.start();
-
-  server.applyMiddleware({ app });
-
-  console.log('servidor listo');
+app.listen(DataBase.port, async () => {
+    await server.start();
+    server.applyMiddleware({ app });
+    console.log(`Api GraphQL on Port #${ DataBase.port }`);
 });
