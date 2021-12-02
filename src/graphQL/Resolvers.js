@@ -1,9 +1,6 @@
-import { resolversProject } from "../models/project/ResolversProject";
-import { resolversUser } from "../models/users/ResolversUser";
-import {resolversInscripciones} from '../models/inscripcion/Resolver.js';
-import {resolversAvance} from '../models/avance/Resolvers.js';
-import { resolversAutenticacion } from './auth/Resolvers.js';
+import { resolversProject } from "../models/proyecto/ResolversProject";
+import { resolversUser } from "../models/usuario/ResolversUser";
+import {resolversInscripciones} from '../models/inscripcion/resolvers';
+import {resolversAvance} from '../models/avance/avance';
 
-
-
-export const resolvers = [ resolversProject, resolversUser, resolversInscripciones, resolversAvance, resolversAutenticacion ];
+export const resolvers = [ resolversProject, resolversUser, resolversInscripciones, resolversAvance ];
