@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+const { Schema, model } = mongoose;
 
-const UserSchema = new Schema ({
-
+const userSchema = new Schema({
     Identificacion: { type: String, required: true, unique: true },
     Nombre: { type: String, required: true },
     Apellido: { type: String, required: true },
@@ -12,7 +11,26 @@ const UserSchema = new Schema ({
         enum: ["ESTUDIANTE", "LIDER", "ADMINISTRADOR"],         
     Estado: { type: String, required: true, default: "PENDIENTE",
         enum: ["PENDIENTE", "AUTORIZADO", "NO_AUTORIZADO"], }
+  });
+
+userSchema.virtual('proyectosLiderados', {
+  ref: 'Proyecto',
+  localField: '_id',
+  foreignField: 'lider',
 });
 
-const UserModel = mongoose.model('Usuario', UserSchema);
-export default UserModel;
+userSchema.virtual('avancesCreados', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'creadoPor',
+});
+
+userSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'estudiante',
+});
+
+const UserModel = mongoose.model('Usuario', userSchema);
+
+export { UserModel };
