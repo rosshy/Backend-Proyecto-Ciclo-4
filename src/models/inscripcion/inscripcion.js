@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
 import { ProyectoModel } from '../proyecto/ModelProyect';
-import { UsuarioModel } from '../usuario/ModelUser';
+import { UserModel } from '../usuario/ModelUser';
 
 
 const inscriptionSchema = new Schema({
@@ -25,11 +25,11 @@ const inscriptionSchema = new Schema({
     ref: ProyectoModel,
     required: true,
   },
-  // estudiante: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: UsuarioModel,
-  //   required: true,
-  // },
+  estudiante: {
+    type: Schema.Types.ObjectId,
+    ref: UserModel,
+    required: true,
+  },
 });
 
 const InscriptionModel = model('Inscripcion', inscriptionSchema);
