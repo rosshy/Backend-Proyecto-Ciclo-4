@@ -17,24 +17,8 @@ const projectSchema = new Schema(
     Fase: { type: String, 
         enum: [ "INICIADO", "EN_DESARROLLO", "TERMINADO", "NULO" ],
         required: true, default: "NULO" },
-  },
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true }, 
   }
 );
-
-projectSchema.virtual('avances', {
-  ref: 'Avance',
-  localField: '_id',
-  foreignField: 'proyecto',
-});
-
-projectSchema.virtual('inscripciones', {
-  ref: 'Inscripcion',
-  localField: '_id',
-  foreignField: 'proyecto',
-});
 
 const ProyectoModel = model('Proyecto', projectSchema);
 

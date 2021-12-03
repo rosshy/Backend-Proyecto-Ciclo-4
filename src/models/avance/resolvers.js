@@ -3,7 +3,8 @@ import { ModeloAvance } from './avance.js';
 const resolversAvance = {
   Query: {
     allAvances: async (parent, args) => {
-      const avances = await ModeloAvance.find();
+      const avances = await ModeloAvance.find().populate('proyecto').populate('creadoPor');
+      console.log(avances);
       if (avances.length == 0) { console.log("No hay Registros en la base de datos"); }
       else { return avances; } 
     }, 
@@ -20,12 +21,14 @@ const resolversAvance = {
   },
   Mutation: {
     crearAvance: async (parents, args) => {
-      const avanceCreado = ModeloAvance.create({
+      
+      const avanceCreado = await ModeloAvance.create({
         fecha: args.fecha,
         descripcion: args.descripcion,
         proyecto: args.proyecto,
         creadoPor: args.creadoPor,
       });
+      console.log(avanceCreado);
       return avanceCreado;
     },
   },
