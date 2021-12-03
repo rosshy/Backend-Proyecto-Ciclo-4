@@ -10,8 +10,11 @@ const projectSchema = new Schema(
     Presupuesto: { type: Number, required: true },
     Fecha_Inicio: { type: Date, required: true, default: new Date() },
     Fecha_Terminacion: { type: Date, required: false, defautl: "Null" },
-    Id_Lider: { type: String, required: true },
-    Nom_Lider: { type: String, required: true },
+    Lider: {
+      type: Schema.Types.ObjectId,
+      ref: UserModel,
+      required: true,
+    },
     Estado: { type: String, enum: [ "ACTIVO", "INACTIVO" ], 
         required: true, default: "INACTIVO" },
     Fase: { type: String, 
