@@ -37,12 +37,10 @@ const typeProject = gql `
         Presupuesto: Float!
         Fecha_Inicio: Date
         Fecha_Terminacion: Date
-        Id_Lider: String!
+        Lider: Usuario!
         Avance: [Avance]
-        Nom_Lider: String
         Estado: Estado_Proj
         Fase: Fase_Proj  
-        Est_Inscritos: [Student]      
     }
     type Query {
         allProyectos: [Proyecto] 
@@ -56,12 +54,9 @@ const typeProject = gql `
             Presupuesto: Float!
             Fecha_Inicio: Date
             Fecha_Terminacion: Date
-            Id_Lider: String!
-            Avance: [crearAvance]
-            Nom_Lider: String
+            Lider: String!
             Estado: Estado_Proj
             Fase: Fase_Proj  
-            Est_Inscritos: [crearStudent]  
         ) : Proyecto
 
         deleteProject(
@@ -70,18 +65,16 @@ const typeProject = gql `
 
         updateProject(
             _id: ID!
-            Nombre: String
-            Ob_Generales: String
-            Ob_Especificos: String
-            Presupuesto: Float
+            Nombre: String!
+            Ob_Generales: String!
+            Ob_Especificos: String!
+            Presupuesto: Float!
             Fecha_Inicio: Date
             Fecha_Terminacion: Date
-            Id_Lider: String
-            Nom_Lider: String
+            Lider: String!
             Avance: [crearAvance]
             Estado: Estado_Proj
             Fase: Fase_Proj  
-            Est_Inscritos: [crearStudent]  
         ) : String
     }
 `;
