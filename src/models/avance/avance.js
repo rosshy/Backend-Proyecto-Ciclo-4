@@ -7,7 +7,7 @@ const { Schema, model } = mongoose;
 const avanceSchema = new Schema({
   fecha: {
     type: Date,
-    required: true,
+    default: Date.now()
   },
   descripcion: {
     type: String,
