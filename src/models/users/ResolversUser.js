@@ -1,11 +1,17 @@
-import { UserModel } from '../usuario/ModelUser';
+import UserModel from "./ModelUser";
 
 const resolversUser = {
     Query: {
-        allUsuarios: async (parent, args) => {
-            const users = await UserModel.find();
-            if (users.length == 0) { console.log("No hay Registros en la base de datos"); }
-            else { return users; } 
+        allUsers: async (parent, args) => {
+            if (args.Rol) {
+                const users = await UserModel.find({ Rol: args.Rol });
+                if (users.length == 0) { console.log("No hay Registros en la base de datos"); }
+                else { return users; } 
+            } else {
+                const users = await UserModel.find();
+                if (users.length == 0) { console.log("No hay Registros en la base de datos"); }
+                else { return users; } 
+            }            
         }, 
         getOneUser: async (parent, args) => {
             const query = { Identificacion: args.Identificacion };
