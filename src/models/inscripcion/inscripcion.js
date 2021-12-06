@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { ProjectSchema } from '../project/ModelProyect';
-import { UserSchema } from '../users/ModelUser';
-
+import mongoose from "mongoose";
 const { Schema, model } = mongoose;
+
+import { ProyectoModel } from '../proyecto/ModelProyect';
+import { UserModel } from '../usuario/ModelUser';
 
 
 const inscriptionSchema = new Schema({
@@ -22,12 +22,12 @@ const inscriptionSchema = new Schema({
   },
   proyecto: {
     type: Schema.Types.ObjectId,
-    ref: ProjectSchema,
+    ref: ProyectoModel,
     required: true,
   },
   estudiante: {
     type: Schema.Types.ObjectId,
-    ref: UserSchema,
+    ref: UserModel,
     required: true,
   },
 });

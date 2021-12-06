@@ -11,6 +11,7 @@ const tiposInscripcion = gql`
   }
 
   type Query {
+    allInscripciones: [Inscripcion]
     Inscripciones: [Inscripcion]
   }
 
