@@ -15,9 +15,9 @@
   "author": "Johan Ussa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rosshy/Backend-Proyecto-Ciclo-4.git/issues"
+    "url": "https://github.com/rosshy/Backend-Proyecto-Ciclo-4/issues"
   },
-  "homepage": "https://github.com/rosshy/Backend-Proyecto-Ciclo-4.git#readme",
+  "homepage": "https://github.com/rosshy/Backend-Proyecto-Ciclo-4#readme",
   "dependencies": {
     "apollo-server-express": "^3.5.0",
     "cors": "^2.8.5",
