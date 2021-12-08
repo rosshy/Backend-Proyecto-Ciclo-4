@@ -5,3 +5,4 @@ import { resolverAdvance } from "../models/advances/ResolverAdvance";
 import { resolversAutenticacion } from './auth/resolvers.js';
 
 export const resolvers = [ resolversProject, resolversUser, resolverInscription, resolverAdvance, resolversAutenticacion ];
+
