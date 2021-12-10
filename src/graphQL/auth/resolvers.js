@@ -30,7 +30,7 @@ const resolversAutenticacion = {
 
     login: async (parent, args) => {
       const usuarioEcontrado = await UserModel.findOne({ Email: args.Email });
-      //if (await bcrypt.compare(args.Password, usuarioEcontrado.Password)) {
+      if (await bcrypt.compare(args.Password, usuarioEcontrado.Password)) {
         return {
           token: generateToken({
             _id: usuarioEcontrado._id,
@@ -41,7 +41,7 @@ const resolversAutenticacion = {
             Rol: usuarioEcontrado.Rol,
           }),
         };
-      //}
+      }
     },
 
     refreshToken: async (parent, args, context) => {
