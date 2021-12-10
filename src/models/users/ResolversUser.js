@@ -14,10 +14,10 @@ const resolversUser = {
             }            
         }, 
         getOneUser: async (parent, args) => {
-            const query = { Identificacion: args.Identificacion };
+            const query = { _id: args._id };
             const user = await UserModel.findOne(query);
             if (user) { return user; } 
-            else { console.log(`EL ID ${ args.Identificacion } NO Existe`); }
+            else { console.log(`EL ID ${ args._id } NO Existe`); }
         },
     },
     Mutation: {
@@ -30,18 +30,25 @@ const resolversUser = {
             } else { console.log(`EL Usuario ${ args.Identificacion } ya estaba registrado !!`); }                          
         }, 
         deleteUser: async (parent, args) => {
-            const query = { Identificacion: args.Identificacion };
+            const query = {  _id: args._id   };
             const user = await UserModel.findOneAndDelete(query); 
             if (user) { return ` El ID ${ args.Identificacion } fue Eliminado !!`; }
             else { return `El ID ${ args.Identificacion } No esta registrado en la DB !!`; }             
         },
-        updateUser: async (parent, args) => {            
-            const query = { Identificacion: args.Identificacion };
-            const user = await UserModel.findOne(query);
-            if (user) {
-                const userUpdate = await UserModel.updateOne(query, args);                    
-                if (userUpdate) { return `El Usuario con ID ${ args.Identificacion } Ha sido actualizado!!`; }
-            } else { return `El ID ${ args.Identificacion } No se encuentra Registrado!!`; }                    
+        updateUser: async (parent, args) => {    
+            const updateUser = await UserModel.findByIdAndUpdate(
+                args._id,
+                {
+                  Nombre: args.Nombre,
+                  Apellido: args.Apellido,
+                  Identificacion: args.Identificacion,
+                  Email: args.Email,
+                  Estado: args.Estado,
+                },
+                { new: true }
+              );
+        
+              return updateUser;
         },
     }
 }
