@@ -17,7 +17,7 @@ const typeUser = gql `
     }
     type Query {
         allUsers( Rol: Enum_Rol ): [User]
-        getOneUser( Identificacion: String! ) : User
+        getOneUser( _id: String! ) : User
     }
     type Mutation {
         addUser(
@@ -31,17 +31,18 @@ const typeUser = gql `
         ) : User
 
         updateUser(
+            _id: String!
             Identificacion: String!
             Nombre: String
             Apellido: String
             Email: String
-            Password: String
             Estado: Enum_Estado
-        ) : String
+        ) : User
 
         deleteUser(
+            _id: String
             Identificacion: String!
-        ) : String
+        ) : User
     }
 `;
 
